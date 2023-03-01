@@ -43,21 +43,20 @@ impl Parties {
   }
 
   pub fn mystic_order(&self) -> String {
-    let group = &self.mystic_order.get_random_group();
-    let entities = &self.mystic_order.entities;
     let descriptions = &self.mystic_order.get_descriptions();
+    let mut pattern = sample(&self.mystic_order.patterns);
 
-    // ### Apply Pattern
+    for _ in 0..pattern.matches("<description>").count() {
+      pattern = pattern.replacen("<description>", sample(&descriptions).as_str(), 1);
+    }
 
-    let pattern = sample(&self.mystic_order.patterns);
-    let text = pattern
-      .replace("<group>", sample(&group).as_str())
-      .replace("<entity>", sample(&entities).as_str())
-      .replace("<description>", sample(&descriptions).as_str());
+    pattern = pattern.replace(
+      "<group>",
+      sample(&self.mystic_order.get_random_group()).as_str(),
+    );
+    pattern = pattern.replace("<entity>", sample(&self.mystic_order.entities).as_str());
 
-    // ### Return Capitalized Result
-
-    return text.to_title_case();
+    return pattern.to_title_case();
   }
 
   pub fn guild(&self) -> String {

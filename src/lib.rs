@@ -5,7 +5,6 @@
 */
 
 pub mod generators;
-pub mod inquire;
 pub mod resources;
 pub mod utils;
 
@@ -15,11 +14,12 @@ pub mod utils;
 |--------------------------------------------------------------------------------
 */
 
-use crate::generators::{parties::Parties, species::Species};
+use crate::generators::{parties::Parties, places::Places, species::Species};
 
 pub struct Fantastical {
   pub party: Parties,
   pub species: Species,
+  pub place: Places,
 }
 
 impl Fantastical {
@@ -27,6 +27,7 @@ impl Fantastical {
     return Fantastical {
       party: Parties::new(),
       species: Species::new(),
+      place: Places::new(),
     };
   }
 }

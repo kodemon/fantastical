@@ -1,27 +1,52 @@
-use fantastical::inquire::generators::select_generator;
+use fantastical::Fantastical;
 
 fn main() {
-  select_generator();
+  // select_generator();
 
-  // let fantastical = Fantastical::new();
+  let fantastical = Fantastical::new();
 
-  // print!("\n\n");
-  // for _ in 0..10 {
-  //   println!("Random Mystic Order: {}", fantastical.party.military_unit());
-  // }
-  // print!("\n\n");
-  // for _ in 0..10 {
-  //   println!("Random Military Unit: {}", fantastical.party.mystic_order());
-  // }
-  // print!("\n\n");
-  // for _ in 0..10 {
-  //   println!("Random Guild: {}", fantastical.party.guild());
-  // }
-  // print!("\n\n");
+  print!("\nMystic Orders:\n\n");
+  for _ in 0..10 {
+    println!("  {}", fantastical.party.mystic_order());
+  }
 
-  // println!("Goblin: {}", fantastical.species.goblin());
-  // println!("Orc: {}", fantastical.species.orc());
-  // println!("Ogre: {}", fantastical.species.ogre());
+  print!("\nMilitary Units:\n\n");
+  for _ in 0..10 {
+    println!("  {}", fantastical.party.military_unit());
+  }
+
+  print!("\nGuilds:\n\n");
+  for _ in 0..10 {
+    println!("  {}", fantastical.party.guild());
+  }
+
+  print!("\nTaverns:\n\n");
+  for _ in 0..10 {
+    println!("  {}", fantastical.place.tavern());
+  }
+
+  print!("\nGoblins:\n\n");
+  let mut goblins: Vec<String> = vec![];
+  for _ in 0..5 {
+    goblins.push(fantastical.species.goblin());
+  }
+  println!("  {}", goblins.join(", "));
+
+  print!("\nOrc:\n\n");
+  let mut orcs: Vec<String> = vec![];
+  for _ in 0..5 {
+    orcs.push(fantastical.species.orc());
+  }
+  println!("  {}", orcs.join(", "));
+
+  print!("\nOgre:\n\n");
+  let mut ogres: Vec<String> = vec![];
+  for _ in 0..5 {
+    ogres.push(fantastical.species.ogre());
+  }
+  println!("  {}", ogres.join(", "));
+
+  print!("\n");
 
   // print!("\n\n");
 
